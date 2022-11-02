@@ -1,9 +1,19 @@
-const db = require("./dbproducts.js");
 import { Router } from 'express';
-
-const DB = new db("data");
+import daos from './daos/index.js';
 
 const routerProds=Router()
+
+// (async () => {
+//     const { productosDao } = await daos();
+//     await productosDao.save({
+//       name: "Bulbasaur",
+//       dex: 1,
+//       types: ["Grass", "Poison"],
+//     });
+//     console.log(await productosDao.findAll());
+//     //  console.log(await pokemonMongo.findByName("Bulbasaur"));
+//     //console.log(await trainerMongo.findById("635c56101795f3da84d46c51"));
+//   })();
 
 // Para chequear si se tienen permisos de administrador
 let isAdmin=true
