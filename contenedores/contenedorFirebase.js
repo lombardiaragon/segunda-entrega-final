@@ -46,17 +46,8 @@ class ContenedorFirebase {
   }
 
   async update(elem) {
-    // {
-    //     _id: new ObjectId("635c56101795f3da84d46c51"),
-    //     name: 'eduardo',
-    //     pokemon: [],
-    //     __v: 0
-    //   }
     try {
-      const { n, nModified } = await this.db.replaceOne(
-        { _id: elem._id },
-        elem
-      );
+      const { n, nModified } = await this.db.replaceOne({ _id: elem._id },elem);
       return nModified > 0;
     } catch (e) {
       throw new Error(e);
