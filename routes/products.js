@@ -3,18 +3,6 @@ import daos from '../daos/index.js';
 
 const routerProds=Router()
 
-// (async () => {
-//     const { productosDao } = await daos();
-//     await productosDao.save({
-//       name: "Bulbasaur",
-//       dex: 1,
-//       types: ["Grass", "Poison"],
-//     });
-//     console.log(await productosDao.findAll());
-//     //  console.log(await pokemonMongo.findByName("Bulbasaur"));
-//     //console.log(await trainerMongo.findById("635c56101795f3da84d46c51"));
-//   })();
-
 // Para chequear si se tienen permisos de administrador
 let isAdmin=true
 const Private=(req,res,next)=>{
@@ -29,23 +17,27 @@ const Private=(req,res,next)=>{
 
 // ● GET '/api/productos' -> devuelve todos los productos.
 routerProds.get('/', async (req,res)=>{
-        const Productos= await DB.getAll()
-        res.send({Productos})
+    const { productosDao }=await daos()
+    const Productos= await productosDao.findAll()
+    res.send({Productos})
 })
 
 // ● GET '/api/productos/:id' -> devuelve un producto según su id.
 routerProds.get('/:id', async(req,res)=>{
     routerProds.use(Private)
     const{id}=req.params
+    const { productosDao } = await daos();
 
-    const msg= await DB.getById(id)
+    const msg= await productosDao.findById(id)
     res.send({msg})
 })
 
 // ● POST '/api/productos' -> incorporar producto al listado(administrador)
 routerProds.post('/',Private, async(req,res)=>{
     const newProd= req.body
-    const msg= await DB.save(newProd)
+    const { productosDao } = await daos();
+
+    const msg= await productosDao.save(newProd)
     res.send({message: msg})
 
 })
