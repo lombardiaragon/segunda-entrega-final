@@ -27,7 +27,9 @@ class ContenedorFirebase {
 
   async findAll() {
     try {
-      const data = await this.db.find({});
+      const querySnapshot= await this.query.get()
+      let docs=querySnapshot.docs
+      const data= docs.map(doc=>doc)
       return data;
     } catch (e) {
       throw new Error(e);
@@ -36,7 +38,7 @@ class ContenedorFirebase {
 
   async save(newDoc) {
     try {
-      const doc = await this.db.create(newDoc);
+      const doc = await this.query.add(newDoc);
       return doc;
     } catch (e) {
       throw new Error(e);

@@ -46,15 +46,18 @@ routerProds.post('/',Private, async(req,res)=>{
 routerProds.put('/:id',Private, async(req,res)=>{
     const{id}=req.params
     const newProd=req.body
+    const { productosDao } = await daos();
 
-    const msg=await DB.updateById(id,newProd)
+    const msg=await productosDao.update(id,newProd)
     res.send({message: msg})
 })
 
 // ● DELETE '/api/productos/:id' -> elimina un producto según su id.
 routerProds.delete('/:id', async(req,res)=>{
     const{id}=req.params
-    const msg=await DB.deleteById(id)
+    const { productosDao } = await daos();
+
+    const msg=await productosDao.delete(id)
     res.send({message: msg})
 })
 
