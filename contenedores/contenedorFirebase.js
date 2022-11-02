@@ -56,8 +56,8 @@ class ContenedorFirebase {
 
   async delete(id) {
     try {
-      const doc= await this.query.doc(id).get();
-      const item= await doc.delete()
+      const data= await this.query.doc(id).get();
+      const item= await data.delete()
       return `${item} fue borrado exitosamente`;
     } catch (e) {
       throw new Error(e);
