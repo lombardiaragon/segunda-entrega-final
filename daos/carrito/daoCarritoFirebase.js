@@ -7,11 +7,11 @@ class DaoCarritoFirebase extends ContenedorFirebase{
         })
         this.hola=hola
     }
-    eliminarStock(){
-
-    }
-    async saveCart(){
-        super.save()
+    // trabadiiiiiisimo
+    async saveNewProd(id,newProd){
+        const carrito=await super.findById(id)
+        
+        return console.log(carrito);
     }
 }
 

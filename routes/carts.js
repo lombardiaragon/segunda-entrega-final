@@ -30,7 +30,7 @@ routerCart.get('/:id/productos', async(req,res)=>{
     const{id}=req.params
     const { carritoDao } = await daos();
 
-    const prodsInCart= await carritoDao.getById(id)
+    const prodsInCart= await carritoDao.findById(id)
     res.send({prodsInCart})
 })
 
@@ -40,7 +40,7 @@ routerCart.post('/:id/productos', async(req,res)=>{
     const{id}=req.params
     const { carritoDao } = await daos();
 
-    const msg=await DB.saveProd(id,newProd)
+    const msg=await carritoDao.saveNewProd(id,newProd)
     res.send({message: msg})
 })
 
