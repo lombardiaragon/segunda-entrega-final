@@ -9,8 +9,8 @@ class DaoProductosFirebase extends ContenedorFirebase{
             stock:{type:Number, required:true},
         })
     }
-    eliminarProductos(){
-        
+    pruebaDaoFirebase(){
+        console.log('hola dao')
     }
 }
 
