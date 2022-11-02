@@ -7,7 +7,6 @@ class DaoCarritoMongo extends ContenedorMongo{
         })
         this.hola=hola
     }
-    // trabadiiiiiisimo
     async saveNewProd(id,newProd){
         const carrito=await super.findById(id)
         carrito.productos.push(newProd)
