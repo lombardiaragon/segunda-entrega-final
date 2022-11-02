@@ -1,12 +1,13 @@
-import ContenedorMongo from "../../contenedores/contenedorMongo";
+import ContenedorMongo from "../../contenedores/contenedorMongo.js";
 
 class DaoCarritoMongo extends ContenedorMongo{
-    constructor(coleccion,esquema){
+    constructor(){
         super("carritos",{
+            // _id:{type:String, required:true},
             productos:{type:Array, required:true}
         })
     }
-    eliminarStock(){
+    async eliminarStock(){
 
     }
 }
