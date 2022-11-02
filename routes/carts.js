@@ -28,7 +28,9 @@ routerCart.delete('/:id', async(req,res)=>{
 // ● GET '/:id/productos' -> devuelve todos los productos guardados en el carrito.
 routerCart.get('/:id/productos', async(req,res)=>{
     const{id}=req.params
-    const prodsInCart= await DB.getById(id)
+    const { carritoDao } = await daos();
+
+    const prodsInCart= await carritoDao.getById(id)
     res.send({prodsInCart})
 })
 
@@ -36,6 +38,7 @@ routerCart.get('/:id/productos', async(req,res)=>{
 routerCart.post('/:id/productos', async(req,res)=>{
     const newProd= req.body
     const{id}=req.params
+    const { carritoDao } = await daos();
 
     const msg=await DB.saveProd(id,newProd)
     res.send({message: msg})

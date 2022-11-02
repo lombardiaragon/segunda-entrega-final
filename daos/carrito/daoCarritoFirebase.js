@@ -10,6 +10,9 @@ class DaoCarritoFirebase extends ContenedorFirebase{
     eliminarStock(){
 
     }
+    async saveCart(){
+        super.save()
+    }
 }
 
 export default DaoCarritoFirebase

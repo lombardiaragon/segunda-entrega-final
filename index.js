@@ -16,8 +16,6 @@ app.get('*', (req,res)=>{
 
 // app.use(express.static(__dirname + '/public'))
 
-
-
 app.listen(8080,()=>{
     try{
         console.log('iniciado')

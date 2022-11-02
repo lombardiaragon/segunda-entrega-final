@@ -12,6 +12,7 @@ class DaoProductosFirebase extends ContenedorFirebase{
     pruebaDaoFirebase(){
         console.log('hola dao')
     }
+   
 }
 
 export default DaoProductosFirebase
