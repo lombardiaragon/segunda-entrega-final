@@ -47,8 +47,8 @@ class ContenedorFirebase {
 
   async update(elem) {
     try {
-      const { n, nModified } = await this.db.replaceOne({ _id: elem._id },elem);
-      return nModified > 0;
+      const doc = await this.query.doc(elem._id).set(elem);
+      return doc;
     } catch (e) {
       throw new Error(e);
     }
@@ -56,15 +56,22 @@ class ContenedorFirebase {
 
   async delete(id) {
     try {
-      const { n, nDeleted } = await this.db.deleteOne({ _id: id });
-      return nDeleted > 0;
+      const doc= await this.query.doc(id).get();
+      const item= await doc.delete()
+      return `${item} fue borrado exitosamente`;
     } catch (e) {
       throw new Error(e);
     }
   }
 
   async deleteAll() {
-    await this.db.deleteMany({});
+    try {
+      const doc= await this.query.doc.get();
+      const item= await doc.delete()
+      return `${item} fue borrado exitosamente`;
+    } catch (e) {
+      throw new Error(e);
+    }
   }
 }
 
