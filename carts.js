@@ -1,12 +1,9 @@
-const express=require('express')
+import { Router } from "express";
 const db = require("./dbcart.js");
 
-const {Router}=express
 const DB = new db("data");
 
 const routerCart=Router()
-const Carrito=[]
-
 
 // ● POST '/' -> crea un carrito y lo devuelve con su id 
 // asignado.
@@ -52,4 +49,4 @@ routerCart.delete('/:id/productos/:id_prod', async(req,res)=>{
 })
 
 
-module.exports=routerCart
+export default routerCart

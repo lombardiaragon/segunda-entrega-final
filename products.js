@@ -1,12 +1,9 @@
-const express=require('express')
 const db = require("./dbproducts.js");
-import express from 'express'
+import { Router } from 'express';
 
-const {Router}=express
 const DB = new db("data");
 
 const routerProds=Router()
-// const Productos=[]
 
 // Para chequear si se tienen permisos de administrador
 let isAdmin=true
@@ -60,4 +57,4 @@ routerProds.delete('/:id', async(req,res)=>{
 })
 
 
-module.exports=routerProds
+export default routerProds
