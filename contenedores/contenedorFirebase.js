@@ -56,9 +56,8 @@ class ContenedorFirebase {
 
   async delete(id) {
     try {
-      const data= await this.query.doc(id).get();
-      const item= await data.delete()
-      return `${item} fue borrado exitosamente`;
+      const doc= await this.query.doc(id).delete()
+      return `elemento ${doc} fue borrado exitosamente`;
     } catch (e) {
       throw new Error(e);
     }
@@ -66,9 +65,8 @@ class ContenedorFirebase {
 
   async deleteAll() {
     try {
-      const doc= await this.query.doc.get();
-      const item= await doc.delete()
-      return `${item} fue borrado exitosamente`;
+      await this.query.doc.delete()
+      return `elementos borrados exitosamente`;
     } catch (e) {
       throw new Error(e);
     }
