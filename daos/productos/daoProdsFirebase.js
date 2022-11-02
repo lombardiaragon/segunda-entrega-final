@@ -3,7 +3,10 @@ import ContenedorFirebase from "../../contenedores/contenedorFirebase";
 class DaoProductosFirebase extends ContenedorFirebase{
     constructor(){
         super("productos",{
-            productos:{type:Array, required:true}
+            name:{type:String, required:true},
+            description:{type:String, required:true},
+            price:{type:Number, required:true},
+            stock:{type:Number, required:true},
         })
     }
     eliminarProductos(){
