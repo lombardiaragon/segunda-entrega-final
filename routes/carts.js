@@ -1,26 +1,16 @@
 import { Router } from "express";
 import daos from "../daos/index.js";
 
+  
 const routerCart=Router()
 
-// (async () => {
-//     const { carritoDao } = await daos();
-//     await carritoDao.save({
-//       name: "Bulbasaur",
-//       dex: 1,
-//       types: ["Grass", "Poison"],
-//     });
-//     console.log(await carritoDao.findAll());
-//     //  console.log(await pokemonMongo.findByName("Bulbasaur"));
-//     //console.log(await trainerMongo.findById("635c56101795f3da84d46c51"));
-//   })();
 
 // ● POST '/' -> crea un carrito y lo devuelve con su id 
 // asignado.
 routerCart.post('/', async(req,res)=>{
     const newCart= req.body
-
-    const msg=await DB.saveCart(newCart)
+    const { carritoDao } = await daos();
+    const msg=await carritoDao.save(newCart)
 
     res.send({message: msg})
 })
@@ -28,8 +18,9 @@ routerCart.post('/', async(req,res)=>{
 // ● DELETE '/:id' -> elimina un carrito según su id.
 routerCart.delete('/:id', async(req,res)=>{
     const{id}=req.params
+    const { carritoDao } = await daos();
 
-    const msg=await DB.deleteById(id)
+    const msg=await carritoDao.delete(id)
     res.send({message: msg})
 
 })
