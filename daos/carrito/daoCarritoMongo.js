@@ -1,8 +1,15 @@
 import ContenedorMongo from "../../contenedores/contenedorMongo";
 
-class daoCarritoMongo extends ContenedorMongo{
+class DaoCarritoMongo extends ContenedorMongo{
     constructor(coleccion,esquema,pito){
-        super("carritos",esquema)
+        super("carritos",{
+            productos:{type:Array, required:true}
+        })
         this.pito=pito
     }
+    eliminarStock(){
+
+    }
 }
+
+export default DaoCarritoMongo
