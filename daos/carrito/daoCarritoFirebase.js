@@ -1,11 +1,11 @@
 import ContenedorFirebase from "../../contenedores/contenedorFirebase";
 
 class DaoCarritoFirebase extends ContenedorFirebase{
-    constructor(coleccion,esquema,pito){
+    constructor(coleccion,esquema,hola){
         super("carritos",{
             productos:{type:Array, required:true}
         })
-        this.pito=pito
+        this.hola=hola
     }
     eliminarStock(){
 
