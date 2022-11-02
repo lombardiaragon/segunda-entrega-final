@@ -1,14 +1,19 @@
 import ContenedorMongo from "../../contenedores/contenedorMongo.js";
 
 class DaoCarritoMongo extends ContenedorMongo{
-    constructor(){
+    constructor(coleccion,esquema,hola){
         super("carritos",{
-            // _id:{type:String, required:true},
-            productos:{type:Array, required:true}
+            productos:{type:[], required:true, default:[]}
         })
+        this.hola=hola
     }
-    async eliminarStock(){
-
+    // trabadiiiiiisimo
+    async saveNewProd(id,newProd){
+        const carrito=await super.findById(id)
+        carrito.productos.push(newProd)
+        await this.db.updateOne({id},carrito)
+        
+        return console.log('carritossssss',carrito.productos);
     }
 }
 
