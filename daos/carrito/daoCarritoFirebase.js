@@ -10,8 +10,10 @@ class DaoCarritoFirebase extends ContenedorFirebase{
     // trabadiiiiiisimo
     async saveNewProd(id,newProd){
         const carrito=await super.findById(id)
+        carrito.productos.push(newProd)
+        await this.query.doc(id).set(carrito)
         
-        return console.log(carrito);
+        return carrito;
     }
 }
 
