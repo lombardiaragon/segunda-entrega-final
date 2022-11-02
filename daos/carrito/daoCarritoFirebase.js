@@ -1,11 +1,10 @@
 import ContenedorFirebase from "../../contenedores/contenedorFirebase.js";
 
 class DaoCarritoFirebase extends ContenedorFirebase{
-    constructor(coleccion,esquema,hola){
+    constructor(){
         super("carritos",{
             productos:{type:[], required:true, default:[]}
         })
-        this.hola=hola
     }
     // trabadiiiiiisimo
     async saveNewProd(id){
