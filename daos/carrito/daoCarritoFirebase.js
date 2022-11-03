@@ -3,6 +3,7 @@ import ContenedorFirebase from "../../contenedores/contenedorFirebase.js";
 class DaoCarritoFirebase extends ContenedorFirebase{
     constructor(){
         super("carritos",{
+            timesTamp:Date,
             productos:{type:[], required:true, default:[]}
         })
     }

@@ -16,6 +16,16 @@ class ContenedorFirebase {
     this.query=db.collection(coleccion)
   }
 
+  async save(newDoc) {
+    try {
+      newDoc.timesTamp= new Date().toLocaleString() 
+      const doc = await this.query.add(newDoc);
+      return doc;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
   async findById(id) {
     try {
       const data = await this.query.doc(id).get();
@@ -36,14 +46,7 @@ class ContenedorFirebase {
     }
   }
 
-  async save(newDoc) {
-    try {
-      const doc = await this.query.add(newDoc);
-      return doc;
-    } catch (e) {
-      throw new Error(e);
-    }
-  }
+
 
   async update(elem) {
     try {
