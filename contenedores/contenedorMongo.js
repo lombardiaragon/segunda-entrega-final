@@ -7,6 +7,16 @@ class ContenedorMongo {
   constructor(coleccion, esquema) {
     this.db = mongoose.model(coleccion, esquema);
   }
+  
+  async save(newDoc) {
+    try {
+      
+      const doc = await this.db.create(newDoc);
+      return doc;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
 
   async findById(id) {
     try {
@@ -21,15 +31,6 @@ class ContenedorMongo {
     try {
       const data = await this.db.find({});
       return data;
-    } catch (e) {
-      throw new Error(e);
-    }
-  }
-
-  async save(newDoc) {
-    try {
-      const doc = await this.db.create(newDoc);
-      return doc;
     } catch (e) {
       throw new Error(e);
     }

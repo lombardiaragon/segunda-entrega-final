@@ -8,10 +8,9 @@ const routerCart=Router()
 // ● POST '/' -> crea un carrito y lo devuelve con su id 
 // asignado.
 routerCart.post('/', async(req,res)=>{
-    // const newCart= req.body
+    const newCart= req.body
     const { carritoDao } = await daos();
-    // const msg=await carritoDao.save(newCart)
-    const msg=await carritoDao.save()
+    const msg=await carritoDao.save(newCart)
 
     res.send({message: msg})
 })

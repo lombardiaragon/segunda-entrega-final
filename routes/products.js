@@ -22,6 +22,16 @@ routerProds.get('/', async (req,res)=>{
     res.send({Productos})
 })
 
+// ● POST '/api/productos' -> incorporar producto al listado(administrador)
+routerProds.post('/',Private, async(req,res)=>{
+    const newProd= req.body
+    const { productosDao } = await daos();
+
+    const msg= await productosDao.save(newProd)
+    res.send({message: msg})
+
+})
+
 // ● GET '/api/productos/:id' -> devuelve un producto según su id.
 routerProds.get('/:id', async(req,res)=>{
     routerProds.use(Private)
@@ -32,15 +42,7 @@ routerProds.get('/:id', async(req,res)=>{
     res.send({msg})
 })
 
-// ● POST '/api/productos' -> incorporar producto al listado(administrador)
-routerProds.post('/',Private, async(req,res)=>{
-    const newProd= req.body
-    const { productosDao } = await daos();
 
-    const msg= await productosDao.save(newProd)
-    res.send({message: msg})
-
-})
 
 // ● PUT '/api/productos/:id' -> recibe y actualiza un producto según su id.
 routerProds.put('/:id',Private, async(req,res)=>{
