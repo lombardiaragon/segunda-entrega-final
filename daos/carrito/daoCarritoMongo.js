@@ -11,7 +11,7 @@ class DaoCarritoMongo extends ContenedorMongo{
         carrito.productos.push(newProd)
         await this.db.updateOne({id},carrito)
         
-        return console.log('carritossssss',carrito.productos);
+        return carrito.productos;
     }
 }
 

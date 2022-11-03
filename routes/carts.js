@@ -47,8 +47,10 @@ routerCart.post('/:id/productos', async(req,res)=>{
 // ● DELETE: '/:id/productos/:id_prod' - Eliminar un producto del carrito por su id de carrito y de producto.
 routerCart.delete('/:id/productos/:id_prod', async(req,res)=>{
     const{id,id_prod}=req.params
+    const { carritoDao } = await daos();
 
-    const msg=await DB.deleteProdInCart(id,id_prod)
+
+    const msg=await carritoDao.deleteProdInCart(id,id_prod)
     res.send({message:msg})
 })
 

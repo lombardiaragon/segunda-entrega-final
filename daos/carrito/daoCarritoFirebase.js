@@ -6,11 +6,11 @@ class DaoCarritoFirebase extends ContenedorFirebase{
             productos:{type:[], required:true, default:[]}
         })
     }
-    // trabadiiiiiisimo
-    async saveNewProd(id){
+    // no funciona
+    async saveNewProd(id,newProd){
         const carrito=await super.findById(id)
-        // carrito.productos.push(newProd)
-        // await this.query.doc(id).set(carrito)
+        carrito.productos.push(newProd)
+        await this.query.doc(id).set(carrito)
         
         return console.log('carritossssss',carrito.productos.length);
     }
