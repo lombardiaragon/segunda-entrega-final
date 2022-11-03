@@ -10,7 +10,7 @@ class ContenedorMongo {
   
   async save(newDoc) {
     try {
-      
+      newDoc.timesTamp= new Date().toLocaleString() //no me agrega el timesTamp
       const doc = await this.db.create(newDoc);
       return doc;
     } catch (e) {
