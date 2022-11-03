@@ -8,11 +8,14 @@ class DaoCarritoFirebase extends ContenedorFirebase{
     }
     // no funciona
     async saveNewProd(id,newProd){
-        const carrito=await super.findById(id)
-        carrito.productos.push(newProd)
-        await this.query.doc(id).set(carrito)
+        const querySnapshot=await super.findAll()
+        // const data=querySnapshot.find(el=>el.id==id)
+        querySnapshot.forEach(doc=>console.log(doc.data()))
         
-        return console.log('carritossssss',carrito.productos.length);
+
+        
+        
+        return console.log('carritossssss');
     }
 }
 
