@@ -6,16 +6,14 @@ class DaoCarritoFirebase extends ContenedorFirebase{
             productos:{type:[], required:true, default:[]}
         })
     }
-    // no funciona
+    // no me saleeee
     async saveNewProd(id,newProd){
         const querySnapshot=await super.findAll()
-        // const data=querySnapshot.find(el=>el.id==id)
-        querySnapshot.forEach(doc=>console.log(doc.data()))
+        const data=querySnapshot.find(el=>el.id==id)
+        // querySnapshot.forEach(doc=>console.log(doc.data()))
+ 
         
-
-        
-        
-        return console.log('carritossssss');
+        return console.log('carritossssss',data.data());
     }
 }
 
