@@ -10,7 +10,7 @@ class DaoCarritoMongo extends ContenedorMongo{
     async saveNewProd(id,newProd){
         const carrito=await super.findById(id)
         carrito.productos.push(newProd)
-        await this.db.updateOne({id},carrito)
+        await this.db.updateOne({id},{$set:{productos: carrito.productos}})
         
         return carrito.productos;
     }
